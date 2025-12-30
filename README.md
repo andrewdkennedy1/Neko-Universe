@@ -8,7 +8,7 @@
 
 Welcome to the cutest corner of the internet! This magical little app brings you an adorable neko friend to brighten your day.
 
-💖 **Special thanks to the original [neko](https://github.com/eliot-akira/neko) project for inspiration!**
+💖 **Special thanks to the original [neko](https://en.wikipedia.org/wiki/Neko_(software)) and https://github.com/eliot-akira/neko project for inspiration!**
 
 ## 🚀 Getting Started (Nya~!)
 
