@@ -3,7 +3,6 @@ compatibility_date = "2024-12-29"
 
 [assets]
 directory = "./dist"
-html_handling = "none"
 
 [[routes]]
 pattern = "neko.catcafe.space"
