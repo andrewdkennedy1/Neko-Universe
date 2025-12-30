@@ -5,8 +5,6 @@ compatibility_date = "2024-12-29"
 directory = "./dist"
 html_handling = "none"
 
-[env.production]
-
-[[env.production.routes]]
+[[routes]]
 pattern = "neko.catcafe.space/*"
 custom_domain = true
