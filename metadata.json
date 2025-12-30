@@ -1,0 +1,5 @@
+{
+  "name": "Icon Library Studio",
+  "description": "A professional tool to view, organize, generate, and animate icons. Supports legacy .icl extraction and modern icon formats.",
+  "requestFramePermissions": []
+}
