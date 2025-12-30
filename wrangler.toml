@@ -6,5 +6,5 @@ directory = "./dist"
 html_handling = "none"
 
 [[routes]]
-pattern = "neko.catcafe.space/*"
+pattern = "neko.catcafe.space"
 custom_domain = true
