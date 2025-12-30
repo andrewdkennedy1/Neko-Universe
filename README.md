@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" height="475" alt="CatGif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" />
 </div>
 
 # 🌸 Neko Universe ✨
@@ -20,14 +20,6 @@ Welcome to the cutest corner of the internet! This magical little app brings you
 
 *Now go have some fun with your new neko friend! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧*
 
-## 🚀 Deploy to Cloudflare (Nya~!)
+## 🚀 Live Demo
 
-### One-time setup:
-1. **Install Wrangler:** `npm install -g wrangler` 🔧
-2. **Login to Cloudflare:** `wrangler login` 🔑
-
-### Deploy:
-1. **Build the app:** `npm run build` 📦
-2. **Deploy to Cloudflare:** `npm run deploy` ✨
-
-*Your neko will be live at neko.catcafe.space! 🌐*
+https://neko.catcafe.space

@@ -2,9 +2,6 @@ name = "neko-universe"
 compatibility_date = "2024-12-29"
 
 [env.production]
-routes = [
-  { pattern = "neko.catcafe.space", custom_domain = true }
-]
 
 [[env.production.routes]]
 pattern = "neko.catcafe.space/*"
