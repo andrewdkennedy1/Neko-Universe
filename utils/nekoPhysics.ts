@@ -389,7 +389,9 @@ export class Neko {
                 targetX = this.logicX + (xdiff / dLength) * dwLimit;
                 targetY = this.logicY + (ydiff / dLength) * dwLimit;
             } else {
-                targetX = targetY = 32;
+                // If perfectly on mouse, run to casual center screen offset
+                targetX = this.boundsWidth / 2 + (Math.random() * 200 - 100);
+                targetY = this.boundsHeight / 2 + (Math.random() * 200 - 100);
             }
             this.runTowards(targetX, targetY);
             if (this.state === NekoState.AWAKE) {
@@ -648,6 +650,17 @@ export class Neko {
         if (this.state === NekoState.SLEEP) {
             this.setState(NekoState.AWAKE);
         }
+
+        // Reset running state so we don't sprint to a stale target from previous mode
+        this.targetX = this.logicX;
+        this.targetY = this.logicY;
+        this.oldTargetX = this.logicX;
+        this.oldTargetY = this.logicY;
+        this.actionCount = 0;
+        this.tickCount = 0;
+
+        // Slightly nudge to trigger update
+        this.setState(NekoState.AWAKE);
 
         console.log("Behavior switch:", BehaviorMode[this.behaviorMode]);
         if (this.onBehaviorChange) {

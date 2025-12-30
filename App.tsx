@@ -14,10 +14,14 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState("");
   const [showToast, setShowToast] = useState(false);
 
-  const handleModeChange = (mode: string) => {
+  const handleModeChange = React.useCallback((mode: string) => {
     setToastMessage(`Behavior: ${mode}`);
     setShowToast(true);
-  };
+  }, []);
+
+  const handleCloseNeko = React.useCallback(() => {
+    setActiveNeko(null);
+  }, []);
 
   return (
     <div className="flex h-screen w-screen bg-black text-white font-sans selection:bg-purple-500/30 overflow-hidden relative">
@@ -44,7 +48,7 @@ export default function App() {
       {activeNeko && (
         <NekoOverlay
           skin={activeNeko}
-          onClose={() => setActiveNeko(null)}
+          onClose={handleCloseNeko}
           onModeChange={handleModeChange}
         />
       )}
