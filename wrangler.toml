@@ -1,6 +1,9 @@
 name = "neko-universe"
 compatibility_date = "2024-12-29"
 
+[assets]
+directory = "./dist"
+
 [env.production]
 
 [[env.production.routes]]
