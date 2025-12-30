@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RemoteLibrary from './components/RemoteLibrary';
 import NekoOverlay from './components/NekoOverlay';
 import IclInspector from './components/IclInspector';
+import Toast from './components/Toast';
 import { NekoSkin } from './types';
 import { GithubFile } from './services/githubService';
 import { Cat, Github } from 'lucide-react';
@@ -10,9 +11,23 @@ export default function App() {
   const [activeNeko, setActiveNeko] = useState<NekoSkin | null>(null);
   const [showSelector, setShowSelector] = useState(true);
   const [inspectFile, setInspectFile] = useState<GithubFile | null>(null);
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleModeChange = (mode: string) => {
+    setToastMessage(`Behavior: ${mode}`);
+    setShowToast(true);
+  };
 
   return (
     <div className="flex h-screen w-screen bg-black text-white font-sans selection:bg-purple-500/30 overflow-hidden relative">
+      <Toast
+        message={toastMessage}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
+      {/* Background / Playground Area */}
 
       {/* Background / Playground Area */}
       <div className="absolute inset-0 bg-[#121212] flex items-center justify-center pointer-events-auto" onClick={() => setShowSelector(false)}>
@@ -30,6 +45,7 @@ export default function App() {
         <NekoOverlay
           skin={activeNeko}
           onClose={() => setActiveNeko(null)}
+          onModeChange={handleModeChange}
         />
       )}
 
@@ -48,7 +64,7 @@ export default function App() {
 
       {/* Sidebar Selector (Collapsible or Overlay) */}
       <div
-        className={`absolute top-0 left-0 h-full w-80 bg-neutral-900/90 backdrop-blur border-r border-neutral-800 transition-transform duration-300 z-40 ${showSelector ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`absolute top-0 left-0 h-full w-80 bg-neutral-900/90 backdrop-blur border-r border-neutral-800 transition-transform duration-500 ease-in-out z-40 ${showSelector ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <RemoteLibrary
           onPlayNeko={(skin) => {

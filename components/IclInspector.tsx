@@ -99,7 +99,7 @@ const IclInspector: React.FC<IclInspectorProps> = ({ file, onClose, onPlay }) =>
         const get = (idx: number) => icons[idx]?.url || icons[0]?.url;
 
         for (const [key, idx] of Object.entries(mapping)) {
-            spriteMap[key] = get(idx);
+            spriteMap[key] = get(idx as number);
         }
 
         const skin: NekoSkin = {

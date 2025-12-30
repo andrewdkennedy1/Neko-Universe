@@ -5,9 +5,10 @@ import { Neko, NekoState } from '../utils/nekoPhysics';
 interface NekoOverlayProps {
   skin: NekoSkin;
   onClose: () => void;
+  onModeChange?: (mode: string) => void;
 }
 
-const NekoOverlay: React.FC<NekoOverlayProps> = ({ skin, onClose }) => {
+const NekoOverlay: React.FC<NekoOverlayProps> = ({ skin, onClose, onModeChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nekoRef = useRef<Neko | null>(null);
 
@@ -80,6 +81,7 @@ const NekoOverlay: React.FC<NekoOverlayProps> = ({ skin, onClose }) => {
         fps: 60,   // 60 is plenty smooth for pixel art
         sprites: spirteArray,
         onClose: onClose,
+        onBehaviorChange: onModeChange,
         startY: window.innerHeight / 2,
         startX: window.innerWidth / 2,
       });

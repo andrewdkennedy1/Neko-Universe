@@ -51,6 +51,7 @@ export interface NekoOptions {
     sprites?: string[];
     parentElement?: HTMLElement;
     onClose?: () => void;
+    onBehaviorChange?: (mode: string) => void;
 }
 
 export class Neko {
@@ -87,6 +88,7 @@ export class Neko {
     allowBehaviorChange: boolean;
     parentElement: HTMLElement | null = null;
     onClose?: () => void;
+    onBehaviorChange?: (mode: string) => void;
 
     running: boolean = false;
     intervalId: any = null;
@@ -133,6 +135,7 @@ export class Neko {
         this.spriteImages = options.sprites || [];
         this.parentElement = options.parentElement || document.body;
         this.onClose = options.onClose;
+        this.onBehaviorChange = options.onBehaviorChange;
 
         this.logicX = this.x;
         this.logicY = this.y;
@@ -173,22 +176,27 @@ export class Neko {
         if (this.onClose) {
             const closeBtn = document.createElement("div");
             closeBtn.className = "neko-close-btn";
-            closeBtn.textContent = "Dismiss";
+            closeBtn.innerHTML = "×"; // Simple multiplication sign as 'X'
             closeBtn.style.position = "absolute";
-            closeBtn.style.top = "-24px";
-            closeBtn.style.left = "50%";
-            closeBtn.style.transform = "translateX(-50%)";
-            closeBtn.style.background = "rgba(23, 23, 23, 0.9)";
-            closeBtn.style.color = "#9ca3af";
-            closeBtn.style.fontSize = "10px";
-            closeBtn.style.padding = "2px 6px";
-            closeBtn.style.borderRadius = "4px";
+            closeBtn.style.top = "-8px";
+            closeBtn.style.right = "-8px";
+            closeBtn.style.width = "16px";
+            closeBtn.style.height = "16px";
+            closeBtn.style.display = "flex";
+            closeBtn.style.alignItems = "center";
+            closeBtn.style.justifyContent = "center";
+            closeBtn.style.background = "rgba(0, 0, 0, 0.6)";
+            closeBtn.style.color = "#fff";
+            closeBtn.style.fontSize = "14px";
+            closeBtn.style.lineHeight = "1";
+            closeBtn.style.borderRadius = "50%";
             closeBtn.style.opacity = "0";
-            closeBtn.style.transition = "opacity 0.2s";
+            closeBtn.style.transition = "opacity 0.2s, transform 0.2s";
             closeBtn.style.pointerEvents = "auto";
             closeBtn.style.cursor = "pointer";
-            closeBtn.style.border = "1px solid rgba(64, 64, 64, 0.5)";
-            closeBtn.style.whiteSpace = "nowrap";
+            closeBtn.style.border = "1px solid rgba(255, 255, 255, 0.2)";
+            closeBtn.style.userSelect = "none";
+            closeBtn.style.zIndex = "1000000";
 
             closeBtn.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -196,9 +204,19 @@ export class Neko {
                 if (this.onClose) this.onClose();
             });
 
+            // Add hover scale effect
+            closeBtn.addEventListener("mouseenter", () => {
+                closeBtn.style.transform = "scale(1.2)";
+                closeBtn.style.background = "rgba(220, 38, 38, 0.8)"; // Red warning color on hover
+            });
+            closeBtn.addEventListener("mouseleave", () => {
+                closeBtn.style.transform = "scale(1)";
+                closeBtn.style.background = "rgba(0, 0, 0, 0.6)";
+            });
+
             this.element.appendChild(closeBtn);
 
-            // Hover effects
+            // Hover effects on the main container to show button
             this.element.addEventListener("mouseenter", () => {
                 closeBtn.style.opacity = "1";
             });
@@ -632,6 +650,11 @@ export class Neko {
         }
 
         console.log("Behavior switch:", BehaviorMode[this.behaviorMode]);
+        if (this.onBehaviorChange) {
+            // Convert Enum to readable string
+            const modeName = BehaviorMode[this.behaviorMode].replace(/_/g, " ");
+            this.onBehaviorChange(modeName);
+        }
     }
 
     destroy() {
