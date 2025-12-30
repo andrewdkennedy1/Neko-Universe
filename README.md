@@ -2,19 +2,32 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# 🌸 Neko Universe ✨
 
-This contains everything you need to run your app locally.
+*A purr-fectly adorable neko companion! 🐱*
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Yo8ZbT-zy1L_4HuAAObIieV3Qv14daqT
+Welcome to the cutest corner of the internet! This magical little app brings you an adorable neko friend to brighten your day.
 
-## Run Locally
+💖 **Special thanks to the original [neko](https://github.com/eliot-akira/neko) project for inspiration!**
 
-**Prerequisites:**  Node.js
+## 🚀 Getting Started (Nya~!)
 
+**What you need:** Node.js 💻
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Quick Setup:
+1. **Install the magic:** `npm install` ✨
+2. **Wake up your neko:** `npm run dev` 🐾
+
+*Now go have some fun with your new neko friend! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧*
+
+## 🚀 Deploy to Cloudflare (Nya~!)
+
+### One-time setup:
+1. **Install Wrangler:** `npm install -g wrangler` 🔧
+2. **Login to Cloudflare:** `wrangler login` 🔑
+
+### Deploy:
+1. **Build the app:** `npm run build` 📦
+2. **Deploy to Cloudflare:** `npm run deploy` ✨
+
+*Your neko will be live at neko.catcafe.space! 🌐*

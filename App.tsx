@@ -4,7 +4,7 @@ import NekoOverlay from './components/NekoOverlay';
 import IclInspector from './components/IclInspector';
 import { NekoSkin } from './types';
 import { GithubFile } from './services/githubService';
-import { Cat } from 'lucide-react';
+import { Cat, Github } from 'lucide-react';
 
 export default function App() {
   const [activeNeko, setActiveNeko] = useState<NekoSkin | null>(null);
@@ -75,7 +75,16 @@ export default function App() {
             className="absolute top-4 left-4 px-4 py-2 bg-purple-600 text-white rounded-full shadow-lg hover:scale-105 transition-transform z-40"
           >
             Open Library
-          </button>
+      {/* GitHub Link */}
+      <a 
+        href="https://github.com/andrewdkennedy1/Neko-Universe"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-4 right-4 p-3 bg-neutral-800/80 backdrop-blur text-neutral-300 rounded-full shadow-lg hover:bg-neutral-700 hover:text-white transition-all z-40"
+        title="View on GitHub"
+      >
+        <Github className="w-5 h-5" />
+      </a>          </button>
       )}
     </div>
   );
